@@ -2,6 +2,7 @@ const config = require('../config.json');
 const Twit = require('twit');
 const { username } = require('../util/variables.json');
 const getQuote = require('./GetQuoteService');
+const { tweeted } = require('../util/util');
 
 const T = new Twit(config);
 
@@ -13,25 +14,21 @@ async function tweetEvent(tweet) {
 
   const re = new RegExp(username + '\\s+', 'g');
 
-  const text = '@time_in_rio USD BTC'
-
-  const content = text // replace 'text' with 'tweet.text'
+  const content = txt // replace 'text' with 'tweet.text'
     .replace(re, '')
     .split(/\s+/);
 
   const quote = await getQuote(content);
   console.log(quote);
 
+  const replyText = `@${screenName} ${quote}`
+
   const params = { 
-    status: quote, 
+    status: replyText, 
     in_reply_to_status_id: tweetId 
   };
 
-  T.post('statuses/update', params, (err, data, response) => {
-    !err ? console.log(err) : console.log('Tweeted', params.status);
-  });
+  T.post('statuses/update', params, tweeted);
 }
-
-tweetEvent();
 
 module.exports = tweetEvent;

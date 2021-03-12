@@ -1,5 +1,5 @@
 const currencyArray = ['brl', 'usd', 'eur', 'gbp'];
-const cryptoArray = ['btc', 'eth', 'ltc', 'xmr', 'doge'];
+const cryptoArray = ['btc', 'eth', 'ltc', 'xmr', 'doge', 'xrp'];
 
 function isValid(currency, crypto) {
   return currencyArray.some(e => new RegExp(currency, 'i').test(e)) 
@@ -38,8 +38,13 @@ function contentIsValid(content) {
   return !content || content.length < 2 || content.length > 3;
 }
 
+function tweeted(err, data, res) {
+  return err ? console.log(er) : console.log('Tweeted: ' + res.text);
+}
+
 module.exports.isValid = isValid;
 module.exports.formatCurrency = formatCurrency;
 module.exports.formatCrypto = formatCrypto;
 module.exports.createMessage = createMessage;
 module.exports.contentIsValid = contentIsValid;
+module.exports.tweeted = tweeted;
