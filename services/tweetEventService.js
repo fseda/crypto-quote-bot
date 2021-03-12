@@ -1,7 +1,7 @@
 const config = require('../config.json');
 const Twit = require('twit');
 const { username } = require('../util/variables.json');
-const getQuote = require('./GetQuoteService');
+const getQuote = require('./getQuoteService');
 const { tweeted } = require('../util/util');
 
 const T = new Twit(config);
