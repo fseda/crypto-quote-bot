@@ -1,0 +1,14 @@
+Usage: 
+@quote_crypto
+ currency crypto multiplier*
+
+Ex: 
+@quote_crypto
+ usd btc 3 
+      
+@quote_crypto
+  brl eth
+
+Either of the examples are fine.
+
+*optional

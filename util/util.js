@@ -2,6 +2,7 @@ const currencyArray = ['brl', 'usd', 'eur', 'gbp'];
 const cryptoArray = ['btc', 'eth', 'ltc', 'xmr', 'doge', 'xrp'];
 
 function isValid(currency, crypto) {
+  console.log('Validanting input...');
   return currencyArray.some(e => new RegExp(currency, 'i').test(e)) 
   && cryptoArray.some(e => new RegExp(crypto, 'i').test(e));
 }
@@ -35,6 +36,7 @@ There was a ${target} ${change} price change since last update.`;
 }
 
 function contentIsValid(content) {
+  console.log('Validanting content: ' + content);
   return !content || content.length < 2 || content.length > 3;
 }
 

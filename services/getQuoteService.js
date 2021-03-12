@@ -13,6 +13,7 @@ function getQuote(content) {
   const  [currency, crypto, multiplier]  = [...content];
 
   if (isValid(currency, crypto)) {
+    console.log('Getting quote...');
     return price.getCryptoPrice(currency, crypto).then(obj => createMessage(obj, multiplier))
       .catch(err => err);
   }
