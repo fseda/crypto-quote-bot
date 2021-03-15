@@ -9,3 +9,4 @@ const T = new Twit(config);
 const stream = T.stream('statuses/filter', { track: username });
 
 stream.on('tweet', tweetEvent);
+

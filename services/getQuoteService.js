@@ -1,6 +1,7 @@
 const price = require('crypto-price');
-const { username } = require('../util/variables.json');
-const { contentIsValid, isValid, createMessage } = require('../util/util');
+const { username, currencies, cryptos } = require('../util/variables.json');
+const { createMessage } = require('../util/createMessage');
+const { contentIsValid, currencyAndCryptoExists } = require('../validation/validateContent');
 
 const message = 
 `Sorry, I don't quite understand :(
@@ -8,18 +9,26 @@ const message =
 Usage:  ${username} [CURRENCY] [CRYPTO]`;
 
 function getQuote(content) {
-  if (contentIsValid(content)) return message;
-
-  const  [currency, crypto, multiplier]  = [...content];
-
-  if (isValid(currency, crypto)) {
+  if (contentIsValid(content)) {
     console.log('Getting quote...');
-    return price.getCryptoPrice(currency, crypto).then(obj => createMessage(obj, multiplier))
+
+    const  [currency, crypto, multiplier]  = [...content];
+
+    if (!currencyAndCryptoExists(currency, crypto)) return 
+      `Current input is not yet supported.
+
+Available inputs:
+
+${currencies.toString().replace(/,/g, ', ')}
+
+${cryptos.toString().replace(/,/g, ', ')}`;
+
+    return price.getCryptoPrice(currency, crypto)
+      .then(obj => createMessage(obj, multiplier))
       .catch(err => err);
   }
   
-  return message 
+  return message;
 }
 
-
-module.exports = getQuote;
+module.exports = { getQuote };

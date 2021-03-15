@@ -1,32 +1,25 @@
 const config = require('../config.json');
 const Twit = require('twit');
 const { username } = require('../util/variables.json');
-const getQuote = require('./getQuoteService');
-const { tweeted } = require('../util/util');
+const { generateReply } = require('../util/generateReply');
+const { 
+  tweeted, 
+  isOwnUser, 
+  generateRegex 
+} = require('../util/util');
 
 const T = new Twit(config);
 
 async function tweetEvent(tweet) {
-  const screenName = tweet.user.screen_name;
-  const name = tweet.user.name;
-  const tweetId = tweet.id_str;
-  const txt = tweet.text;
+  const { user: { screen_name }, id_str, text } = { ...tweet };
 
-  const re = new RegExp(username + '\\s+', 'g');
+  if (isOwnUser(screen_name)) return;
 
-  const content = txt // replace 'text' with 'tweet.text'
-    .replace(re, '')
-    .split(/\s+/);
+  const content = generateRegex(username, text);
 
-  const quote = await getQuote(content);
-  console.log(quote);
+  const replyText = await generateReply(screen_name, content);
 
-  const replyText = `@${screenName} ${quote}`
-
-  const params = { 
-    status: replyText, 
-    in_reply_to_status_id: tweetId 
-  };
+  const params = { status: replyText, in_reply_to_status_id: id_str };
 
   T.post('statuses/update', params, tweeted);
 }

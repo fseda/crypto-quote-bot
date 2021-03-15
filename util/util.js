@@ -1,52 +1,42 @@
-const currencyArray = ['brl', 'usd', 'eur', 'gbp'];
-const cryptoArray = ['btc', 'eth', 'ltc', 'xmr', 'doge', 'xrp'];
-
-function isValid(currency, crypto) {
-  console.log('Validanting input...');
-  return currencyArray.some(e => new RegExp(currency, 'i').test(e)) 
-  && cryptoArray.some(e => new RegExp(crypto, 'i').test(e));
-}
-
-function formatCurrency(v) {
-  const exp = 2;
-  const div = 10 ** exp
-
-  return Math.round(v * div) / div;
-}
+const { 
+  cryptos, 
+  currencies, 
+  usernameWithoutAt 
+} = require('./variables.json');
 
 function formatCrypto(v) {
   v = 1 / v;
   const exp = 8;
   const div = 10 ** exp;
-
+  
   return Math.round(v * div) / div;
 }
 
-function createMessage(obj, multiplier = 1) {
-  const { base, target } = obj;
-  const price = formatCurrency(obj.price);
-  const change = formatCurrency(obj.change);
-  const reverse = formatCrypto(obj.price);
+// function isValid(currency, crypto) {
+//   console.log('Validanting input...');
+//   return currencies.some(e => new RegExp(currency, 'i').test(e)) 
+//   && cryptos.some(e => new RegExp(crypto, 'i').test(e));
+// }
 
-  return `${base} ${multiplier} currently costs ${target} ${price * multiplier}
-
-${target} 1 = ${base} ${reverse}
-  
-There was a ${target} ${change} price change since last update.`;
-}
-
-function contentIsValid(content) {
-  console.log('Validanting content: ' + content);
-  return !content || content.length < 2 || content.length > 3;
+function isOwnUser(screen_name) {
+  return screen_name === usernameWithoutAt;
 }
 
 function tweeted(err, data, res) {
-  return err ? console.log(er) : console.log('Tweeted: ' + res.text);
+  return err ? console.log(err) : console.log('Tweeted: ' + data.text);
 }
 
-module.exports.isValid = isValid;
-module.exports.formatCurrency = formatCurrency;
+function generateRegex(username, data) {
+  console.log('Generating regex', data);
+
+  return data
+    .replace(new RegExp(
+      username + '\\s+', 'g'), ''
+    ).split(/\s+/);
+}
+
 module.exports.formatCrypto = formatCrypto;
-module.exports.createMessage = createMessage;
-module.exports.contentIsValid = contentIsValid;
+// module.exports.isValid = isValid;
+module.exports.isOwnUser = isOwnUser;
 module.exports.tweeted = tweeted;
+module.exports.generateRegex = generateRegex;
