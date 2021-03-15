@@ -1,7 +1,5 @@
 # crypto-quote-bot
 
-[You can quote me on Twitter!](https://twitter.com/compose/tweet)
-
 [**Twitter: @quote_crypto**](https://twitter.com/quote_crypto "Follow me!")
 
 ---
@@ -19,3 +17,26 @@
 Note that the parameters are case insensitve.
 
 *\* Optional*
+
+### Supported Inputs
+
+#### Currencies:
+
+>* US Dolar (USD)
+>* Euro (EUR)
+>* Pound Sterling (GBP)
+>* Brazilian Real (BRL)
+
+#### Cryptos:
+>* Bitcoin (BTC)
+>* Ethereum (ETH)
+>* Litecoin (LTC)
+>* Dogecoin (DOGE)
+>* Monero (XMR)
+>* Ripple (XRP)
+
+Feel free to ask to add any functionalities, increase list of accepted currencies or cryptos!
+
+
+
+
