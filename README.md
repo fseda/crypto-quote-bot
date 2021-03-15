@@ -37,7 +37,7 @@ Note that the parameters are case insensitve.
 >* Monero (XMR)
 >* Ripple (XRP)
 
-Feel free to ask to add any functionalities, increase list of accepted currencies or cryptos!
+Feel free to reach me and ask to add any functionalities, increase list of accepted currencies or cryptos!
 
 
 
