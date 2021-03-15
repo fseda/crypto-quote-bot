@@ -2,6 +2,8 @@
 
 [**Twitter: @quote_crypto**](https://twitter.com/quote_crypto "Follow me!")
 
+[**My Personal Twitter account: *@sedafelipe* **](https://twitter.com/sedafelipe "Follow me!")
+
 ---
 
 ### Usage
