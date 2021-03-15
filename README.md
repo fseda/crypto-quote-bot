@@ -1,6 +1,6 @@
 # crypto-quote-bot
 
-You can quote me on Twitter!
+[You can quote me on Twitter!](https://twitter.com/compose/tweet)
 
 [**Twitter: @quote_crypto**](https://twitter.com/quote_crypto "Follow me!")
 
