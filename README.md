@@ -20,6 +20,8 @@ Note that the parameters are case insensitve.
 
 *\* Optional*
 
+---
+
 ### Supported Inputs
 
 #### Currencies:
