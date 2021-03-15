@@ -10,7 +10,7 @@
 
  Usage examples:
 > 
-> @quote_crypto usd Btc
+> @quote_crypto usd Btc 3
 > 
 > @quote_crypto EUR doge
 
