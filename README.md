@@ -8,7 +8,7 @@
 
 ### Usage
 
-@quote_crypto [Currency] [Crypto] *[multiplier] \**
+**@quote_crypto [Currency] [Crypto] *[multiplier] \****
 
  Usage examples:
 > 
