@@ -8,7 +8,7 @@ function contentIsValid(content) {
 
 function currencyAndCryptoExists(currency, crypto) {
   return currencies.some(e => new RegExp(currency, 'i').test(e)) 
-  && cryptos.some(e => new RegExp(crypto, 'i').test(e))
+  && cryptos.some(e => new RegExp(crypto, 'i').test(e));
 }
 
 module.exports.contentIsValid = contentIsValid;

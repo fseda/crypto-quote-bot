@@ -14,14 +14,15 @@ function getQuote(content) {
 
     const  [currency, crypto, multiplier]  = [...content];
 
-    if (!currencyAndCryptoExists(currency, crypto)) return 
-      `Current input is not yet supported.
+    if (!currencyAndCryptoExists(currency, crypto)) {
+      return `Current input is not yet supported.
 
 Available inputs:
 
 ${currencies.toString().replace(/,/g, ', ')}
 
-${cryptos.toString().replace(/,/g, ', ')}`;
+${cryptos.toString().replace(/,/g, ', ')}`
+    };
 
     return price.getCryptoPrice(currency, crypto)
       .then(obj => createMessage(obj, multiplier))

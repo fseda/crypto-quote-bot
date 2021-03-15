@@ -1,4 +1,4 @@
-const getQuote = require('../services/getQuoteService');
+const { getQuote } = require('../services/getQuoteService');
 
 async function generateReply(screen_name, content) {
   const quote = await getQuote(content);
