@@ -11,13 +11,11 @@ const {
 const T = new Twit(config);
 
 async function tweetEvent(tweet) {
-  const { user: { screen_name }, id_str, text } = { ...tweet };
+  const { screen_name, id_str } = tweet;
 
   if (isOwnUser(screen_name)) return;
 
-  const content = generateRegex(username, text);
-
-  const replyText = await generateReply(screen_name, content);
+  const replyText = await generateReply(tweet);
 
   const params = { status: replyText, in_reply_to_status_id: id_str };
 
